@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список клиентов</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Стили для фона */
+        body {
+            background-image: url('/static/background.jpg');
+            background-size: cover; /* Заполнение всего экрана */
+            background-position: center; /* Центрирование изображения */
+            background-repeat: no-repeat; /* Избегаем повторений изображения */
+        }
+
+        /* Прозрачный фон для контейнера */
+        .container {
+            background-color: rgba(255, 255, 255, 0.4); /* Полупрозрачный белый фон */
+            padding: 20px; /* Отступы внутри контейнера */
+            border-radius: 8px; /* Закругляем углы контейнера для лучшего визуального эффекта */
+        }
+
+        /* Установка цвета текста для лучшей видимости на фоне */
+        h1, table {
+            color: black; /* Устанавливаем черный цвет текста для заголовка и таблицы */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Список клиентов</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Карта</th>
+                    <th>Номер машины</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in response %}
+                <tr>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.surname }}</td>
+                    <td>{{ client.credit_card }}</td>
+                    <td>{{ client.car_number }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5">Нет данных для отображения</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
